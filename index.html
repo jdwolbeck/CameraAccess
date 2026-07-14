@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Diagnostic</title>
+
+<style>
+body{
+    background:#000;
+    color:#00ff55;
+    font-family:Consolas, monospace;
+    margin:0;
+    padding:30px;
+}
+
+#terminal{
+    max-width:900px;
+    margin:auto;
+    white-space:pre-wrap;
+    line-height:1.5;
+    font-size:20px;
+}
+
+.cursor{
+    animation:blink 1s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="terminal"></div>
+
+<script>
+
+const lines = [
+"Connecting to device...",
+"",
+"Running system diagnostics...",
+"",
+"Checking internet connection... OK",
+"Checking graphics processor... OK",
+"Checking microphone... OK",
+"",
+"Analyzing snack inventory...",
+"✔ 3 unopened bags of chips detected",
+"",
+"Searching for laundry...",
+"⚠ Critical amount of unfolded clothes found",
+"",
+"Calibrating pet detection algorithm...",
+"✔ Good dog detected (98.7% confidence)",
+"",
+"Estimating caffeine levels...",
+"✔ Within acceptable gamer limits",
+"",
+"Compiling embarrassing moments...",
+"████████████████████ 100%",
+"",
+"Congratulations!",
+"",
+"You've successfully fallen for a fake hacker screen 😂",
+"",
+"Nothing on your computer, camera, or microphone was ever accessed.",
+"",
+"Have a great day!"
+];
+
+const terminal = document.getElementById("terminal");
+
+let i = 0;
+
+function typeLine(){
+    if(i >= lines.length){
+        terminal.innerHTML += "\n<span class='cursor'>█</span>";
+        return;
+    }
+
+    terminal.innerHTML += lines[i] + "\n";
+    terminal.scrollTop = terminal.scrollHeight;
+    i++;
+
+    setTimeout(typeLine, 700);
+}
+
+typeLine();
+
+</script>
+
+</body>
+</html>
